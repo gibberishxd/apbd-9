@@ -4,19 +4,24 @@ using apbd_9.Entities;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 
+
 namespace apbd_9.Controllers
 {
+
     [Route("api/[controller]")]
     [ApiController]
     public class TripsController : ControllerBase
     {
+        
         private readonly TripsContext _context;
 
+        
         public TripsController(TripsContext context)
         {
             _context = context;
         }
 
+        
         [HttpGet]
         public async Task<ActionResult> GetTrips([FromQuery] int page = 1, [FromQuery] int pageSize = 10)
         {
@@ -60,6 +65,7 @@ namespace apbd_9.Controllers
                 trips
             });
         }
+
         
         [HttpPost("{idTrip}/clients")]
         public async Task<ActionResult> AddClientToTrip(TripaddClientDto tripaddClientDto, int idTrip)
@@ -75,6 +81,7 @@ namespace apbd_9.Controllers
             {
                 return BadRequest("The client is already registered for the trip.");
             }
+
             var trip = await _context.Trips.FirstOrDefaultAsync(t => t.IdTrip == idTrip);
             if (trip == null)
             {
