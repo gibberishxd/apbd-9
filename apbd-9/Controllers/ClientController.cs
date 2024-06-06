@@ -1,6 +1,5 @@
 ﻿using apbd_9.Context;
 using Microsoft.AspNetCore.Mvc;
-using System.Threading.Tasks;
 
 namespace apbd_9.Controllers
 {
